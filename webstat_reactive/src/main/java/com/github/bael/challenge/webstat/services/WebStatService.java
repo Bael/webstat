@@ -10,11 +10,18 @@ public interface WebStatService {
     /**
      * Получение статистики посещений за заданный период
      *
-     * @param start  дата время начала периода (UTC)
-     * @param finish дата время конца периода (UTC)
-     * @return статистику
+     * @start дата время начала периода (UTC)
+     * @finish дата время конца периода (UTC)
+     * @return статистику посещений за период
      */
     Mono<SiteEntryStats> getStatFromPeriod(LocalDateTime start, LocalDateTime finish);
 
+    /**
+     * Сохраняем посещение пользователем страницы
+     *
+     * @return количество уникальных и всех посетителей за сегодня
+     * @userId
+     * @pageId
+     */
     Mono<SiteEntrySaveDTO> saveSiteEntry(int userId, int pageId);
 }

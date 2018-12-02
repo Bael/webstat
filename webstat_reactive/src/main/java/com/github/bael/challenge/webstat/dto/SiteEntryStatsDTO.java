@@ -11,16 +11,11 @@ public class SiteEntryStatsDTO {
 
     public static SiteEntryStatsDTO fillFrom(SiteEntryStats siteEntryStats) {
         SiteEntryStatsDTO dto = new SiteEntryStatsDTO();
-
         Objects.requireNonNull(siteEntryStats);
-        System.out.println(siteEntryStats.persistentUserMap.values());
-        dto.persistentCount = siteEntryStats.persistentUserMap.values().stream()
-                .filter(integers -> integers.size() > 9).count();
 
-        dto.uniqueCount = siteEntryStats.persistentUserMap.size();
-        dto.totalCount = siteEntryStats.totalCount.get();
-
-        System.out.println(dto);
+        dto.persistentCount = siteEntryStats.getPersistentCount();
+        dto.uniqueCount = siteEntryStats.getUniqueCount();
+        dto.totalCount = siteEntryStats.getTotalCount();
         return dto;
     }
 

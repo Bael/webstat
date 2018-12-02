@@ -27,13 +27,13 @@ public class WebStatServiceImplTest {
     @Autowired
     private SiteEntryRepository repository;
     @Autowired
-    private WebStatService webStatService;
+    private WebStatServiceImpl webStatService;
 
     private List<SiteEntry> entries = new ArrayList<>();
 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
         LocalDateTime l = LocalDateTime.now(ZoneId.of("UTC"));
         entries.clear();
@@ -84,8 +84,7 @@ public class WebStatServiceImplTest {
 
         StepVerifier.create(webStatService.getStatFromPeriod(start, finish)
                 .map(SiteEntryStatsDTO::fillFrom))
-                .expectNextMatches(siteEntryStatsDTO ->
-                        siteEntryStatsDTO.totalCount == 19 &&
+                .expectNextMatches(siteEntryStatsDTO -> siteEntryStatsDTO.totalCount == 19 &&
                                 siteEntryStatsDTO.uniqueCount == 2
                                 && siteEntryStatsDTO.persistentCount == 1)
                 .verifyComplete();
