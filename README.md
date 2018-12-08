@@ -1,5 +1,6 @@
 # Web stat
-Simple web stat application on Web flux.
+Simple web stat application with two variants: on Web flux, and regular spring boot app.
+
 Collects stats for user and pages ids. Id - integer type.
 You could save entry, or read stats. 
 ## How to start application:
